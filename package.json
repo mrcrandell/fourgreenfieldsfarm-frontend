@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@pinia-plugin-persistedstate/nuxt": "^1.0.0",
+    "nuxt": "3.0.0"
+  },
+  "overrides": {
+    "vue": "latest"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.6",
+    "jwt-decode": "^3.1.2",
+    "nuxt-proxy": "^0.3.12",
+    "pinia": "^2.0.28"
+  }
+}
