@@ -1,0 +1,8 @@
+// stylelint-disable declaration-no-important, selector-no-qualifying-type, property-no-vendor-prefix
+
+// Reboot
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

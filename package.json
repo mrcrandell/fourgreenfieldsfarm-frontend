@@ -9,7 +9,8 @@
   },
   "devDependencies": {
     "@pinia-plugin-persistedstate/nuxt": "^1.0.0",
-    "nuxt": "3.0.0"
+    "nuxt": "3.0.0",
+    "sass": "^1.67.0"
   },
   "overrides": {
     "vue": "latest"

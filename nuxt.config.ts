@@ -33,6 +33,18 @@ export default defineNuxtConfig({
     public: {
       appUrl: process.env.APP_URL || '/'
     }
+  },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `
+            @import "@/assets/scss/_variables.scss";
+            @import "@/assets/scss/_mixins.scss";
+          `
+        }
+      }
+    }
   }
   /* vite: {
     server: {
