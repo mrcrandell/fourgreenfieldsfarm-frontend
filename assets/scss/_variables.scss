@@ -1,2 +1,34 @@
 // Variables
+// Colors
 $white: #fff;
+$camarone: #005a2c;
+$greenhaze: lighten($camarone,15%); //#00a751
+$holly: darken($camarone,15%); //#000e07
+/* Golds */
+$supernova: #ffcb05;
+$visvis: lighten($supernova,30%); //#FFEB9E
+$mustard: lighten($supernova,15%); //#FFDB52
+$pirategold: darken($supernova,15%); //#b89100
+/* Blues */
+$lynch: #647b97;
+$balihai: lighten($lynch,15%); //#91A2B6
+$fiord: darken($lynch,15%); //#465669
+$black: #252525;
+
+// Body
+$body-bg: $white;
+$body-color: $black;
+
+// Fonts
+$font-family-sans-serif: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-serif: 'Cardo', serif;
+$font-family-base: $font-family-sans-serif;
+
+$font-weight-lighter: lighter;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+$font-weight-bolder: bolder;
+
+$font-weight-base: $font-weight-normal;
+$line-height-base: 1.5;
