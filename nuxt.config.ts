@@ -50,7 +50,7 @@ export default defineNuxtConfig({
         }
       }
     }
-  }
+  },
   /* vite: {
     server: {
         proxy: {
@@ -64,4 +64,5 @@ export default defineNuxtConfig({
         }
     }
   } */
+  telemetry: false
 })
