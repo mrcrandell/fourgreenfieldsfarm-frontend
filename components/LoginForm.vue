@@ -10,15 +10,15 @@ interface loginForm {
   password: string;
 }
 
-let loginForm: loginForm = {
+const loginForm: loginForm = {
   email: "",
   password: "",
 };
 
-let email: string = "";
-let password: string = "";
-let isLoading: boolean = false;
-let formError: any = reactive({});
+const email: string = "";
+const password: string = "";
+const isLoading: boolean = false;
+const formError: any = reactive({});
 const submitBtnText = computed(() => {
   if (isLoading) {
     return "Loading...";
@@ -67,7 +67,11 @@ function submitForm() {
 </script>
 
 <template>
-  <form class="login-form" v-on:submit.prevent="submitForm" autocomplete="off">
+  <form
+    class="login-form"
+    autocomplete="off"
+    @submit.prevent="submitForm"
+  >
     <div class="logo-container">
       <!-- <Logo /> -->
     </div>
@@ -75,16 +79,18 @@ function submitForm() {
       class="form-group"
       :class="{ 'is-invalid': formError && formError.username }"
     >
-      <label for="username"
-        >Email
+      <label for="username">Email
         <input
           id="email"
+          v-model="email"
           type="text"
           class="form-control"
-          v-model="email"
           :class="{ 'is-invalid': formError && formError.email }"
-      /></label>
-      <div class="invalid-feedback" v-if="formError && formError.email">
+        ></label>
+      <div
+        v-if="formError && formError.email"
+        class="invalid-feedback"
+      >
         {{ formError.email }}
       </div>
     </div>
@@ -92,21 +98,27 @@ function submitForm() {
       class="form-group"
       :class="{ 'is-invalid': formError && formError.password }"
     >
-      <label for="password"
-        >Password
+      <label for="password">Password
         <input
           id="password"
+          v-model="password"
           type="password"
           class="form-control"
-          v-model="password"
           :class="{ 'is-invalid': formError && formError.password }"
-      /></label>
-      <div class="invalid-feedback" v-if="formError && formError.password">
+        ></label>
+      <div
+        v-if="formError && formError.password"
+        class="invalid-feedback"
+      >
         {{ formError.password }}
       </div>
     </div>
     <div class="form-group">
-      <button type="submit" class="btn btn-primary" :disabled="isLoading">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        :disabled="isLoading"
+      >
         {{ submitBtnText }}
       </button>
     </div>

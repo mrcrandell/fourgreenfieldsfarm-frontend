@@ -4,26 +4,31 @@ export default defineNuxtConfig({
     // ...
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    'nuxt-proxy'
+    'nuxt-proxy',
+    'nuxt-swiper',
+    ['@nuxtjs/eslint-module', {
+      fix: true
+    }]
   ],
+  plugins: [ '~/plugins/clickaway' ],
   piniaPersistedstate: {
     cookieOptions: {
-      sameSite: 'strict',
+      sameSite: 'strict'
     },
     storage: 'localStorage'
   },
   // Proxy
   proxy: {
     options: {
-      target: process.env.API_URL, 
+      target: process.env.API_URL,
       ws: true,
       changeOrigin: true,
       pathRewrite: {
-        '^/api/': '/',
+        '^/api/': '/'
       },
       pathFilter: [
-        '/api/',
-      ],
+        '/api/'
+      ]
     }
   },
   runtimeConfig: {
@@ -50,7 +55,7 @@ export default defineNuxtConfig({
     server: {
         proxy: {
             '/api': {
-              target: process.env.API_URL, 
+              target: process.env.API_URL,
               ws: true,
               changeOrigin: true,
               // pathRewrite: {'^/blog-api' : '/'}

@@ -46,9 +46,9 @@ console.log(data);
 /* const { data: testData } = await useFetch(
   `https://api.sampleapis.com/beers/ale`
 ); */
-const { data: testData } = await useFetch(
+/* const { data: testData } = await useFetch(
   `https://api-dev-2887-3.24preview.com/folder/list`
-);
+); */
 // console.log(testData["_rawValue"]["folder"]);
 // const { folder } = testData.value;
 // console.log(folder["Proxy"]);
@@ -66,7 +66,7 @@ const { data: testData } = await useFetch(
 
 <script lang="ts">
 export default {
-  name: "admin",
+  name: "Admin",
   mounted() {
     // eslint-disable-next-line
     // console.log(authStore);

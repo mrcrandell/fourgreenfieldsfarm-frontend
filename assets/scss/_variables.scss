@@ -13,11 +13,22 @@ $pirategold: darken($supernova,15%); //#b89100
 $lynch: #647b97;
 $balihai: lighten($lynch,15%); //#91A2B6
 $fiord: darken($lynch,15%); //#465669
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
 $black: #252525;
 
 // Body
 $body-bg: $white;
 $body-color: $black;
+
+$link-color: $lynch;
+$link-decoration: none;
+$link-hover-color: $balihai;
+$link-hover-decoration: none;
+
+// Spacer
+$spacer: 1rem;
 
 // Fonts
 $font-family-sans-serif: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -30,5 +41,21 @@ $font-weight-normal: 400;
 $font-weight-bold: 700;
 $font-weight-bolder: bolder;
 
+$font-size-base: 1rem;
+$h1-font-size: $font-size-base * 2.5;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.75;
+$h4-font-size: $font-size-base * 1.5;
+$h5-font-size: $font-size-base * 1.25;
+$h6-font-size: $font-size-base;
+
 $font-weight-base: $font-weight-normal;
 $line-height-base: 1.5;
+
+$headings-font-family: $font-family-serif;
+$headings-font-weight: 500;
+$headings-line-height: 1.2;
+$headings-margin-bottom: $spacer * .5;
+
+// Sizes
+$max-width: 1300px;
