@@ -27,6 +27,7 @@ jobs:
         uses: SpicyPizza/create-envfile@v1
         with:
           envkey_APP_URL: "https://dev.fourgreenfieldsfarm.com"
+          envkey_API_URL: "http://localhost:4200"
           envkey_GOOGLE_ANALYTICS_ID: "UA-16197792-10"
           # envkey_INVISIBLE_RECAPTCHA_SITEKEY: ${{ secrets.ENVKEY_INVISIBLE_RECAPTCHA_SITEKEY }}
           # envkey_INVISIBLE_RECAPTCHA_SECRETKEY: ${{ secrets.ENVKEY_INVISIBLE_RECAPTCHA_SECRETKEY }}
