@@ -67,7 +67,7 @@ definePageMeta({
         </ColorSwatches>
       </div>
       <div>
-        <h1>Typography</h1>
+        <h2>Typography</h2>
 
         <h1>Heading 1</h1>
         <p class="details">
@@ -106,7 +106,7 @@ definePageMeta({
         </p>
       </div>
       <div>
-        <h1>Buttons</h1>
+        <h2>Buttons</h2>
 
         <p>
           <button
@@ -126,32 +126,6 @@ definePageMeta({
             class="btn btn-sm btn-tertiary"
           >
             Tertiary
-          </button>
-        </p>
-        <p>
-          <button
-            type="button"
-            class="btn btn-outline-primary"
-          >
-            Primary
-          </button>
-          <button
-            type="button"
-            class="btn btn-outline-secondary"
-          >
-            Secondary
-          </button>
-          <button
-            type="button"
-            class="btn btn-outline-tertiary"
-          >
-            Tertiary
-          </button>
-          <button
-            type="button"
-            class="btn btn-outline-white"
-          >
-            White
           </button>
         </p>
       </div>
