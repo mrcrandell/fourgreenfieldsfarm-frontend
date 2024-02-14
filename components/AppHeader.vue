@@ -113,7 +113,7 @@ function closeDropdown() {
           </AppHeaderLink>
         </li>
         <li>
-          <AppHeaderLink to="/wedding-event-barn">
+          <AppHeaderLink to="/event-barn">
             Wedding/Event Barn
           </AppHeaderLink>
         </li>

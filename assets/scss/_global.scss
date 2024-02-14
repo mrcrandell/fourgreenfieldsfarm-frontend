@@ -21,3 +21,13 @@ main.main {
     margin-left: auto;
   }
 }
+
+.open-modal {
+  cursor: pointer;
+}
+
+.clearfix::after {
+  display: block;
+  content: "";
+  clear: both;
+}

@@ -1,8 +1,6 @@
 <script setup>
-const slideshowImgs = Array(6).fill(null).map((_, i) => i)
-
-const openedImg = ref('')
-const isModalOpen = ref(false)
+const openedImg = ref('');
+const isModalOpen = ref(false);
 
 function openImg (img) {
   openedImg.value = img
@@ -13,7 +11,6 @@ function openImg (img) {
 <template>
   <div class="slideshow-container">
     <Swiper
-      :height="300"
       :modules="[SwiperAutoplay, SwiperEffectCreative]"
       :slides-per-view="1"
       :loop="true"
@@ -32,20 +29,7 @@ function openImg (img) {
         }
       }"
     >
-      <SwiperSlide
-        v-for="img in slideshowImgs"
-        :key="img"
-      >
-        <a
-          class="slideshow-link thumbnail-popup"
-          :href="`/assets/img/photos/events${img + 1}.jpg`"
-          @click.prevent="openImg(`/assets/img/photos/events${img + 1}.jpg`)"
-        ><img
-          :src="`/assets/img/photos/cropped/events${img + 1}.jpg`"
-          class="slideshow-img"
-          :alt="`Event page photo ${img + 1}`"
-        ></a>
-      </SwiperSlide>
+      <slot :events="{ openImg }" />
       <BaseSlideshowControls />
     </Swiper>
     <BaseModal
@@ -78,8 +62,8 @@ function openImg (img) {
   position: relative;
   border: 4px solid $camarone;
   @include shadow-1();
-  width: 300px;
-  a, .slideshow-img {
+  // width: 300px;
+  :deep(a), :deep(.slideshow-img) {
     display: block;
   }
 }

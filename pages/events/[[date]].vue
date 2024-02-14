@@ -19,7 +19,7 @@ const month = computed(() => {
   return parse(monthString, 'MMMM-yyyy', new Date());
 });
 
-const eventData = await useFetch(`${config.public.appUrl}/api/cal-event?startsAt=${format(startOfMonth(month.value), 'yyyy-MM-dd\'T\'HH:mm:ssXX')}&endsAt=${format(endOfMonth(month.value), 'yyyy-MM-dd\'T\'HH:mm:ssXX')}`)
+/* const eventDataOld = await useFetch(`${config.public.appUrl}/api/cal-event?startsAt=${format(startOfMonth(month.value), 'yyyy-MM-dd\'T\'HH:mm:ssXX')}&endsAt=${format(endOfMonth(month.value), 'yyyy-MM-dd\'T\'HH:mm:ssXX')}`)
   .then((response) => {
     // console.log(response.data["_rawValue"]);
     const data = response["data"]["_rawValue"]['calEvent'];
@@ -28,7 +28,20 @@ const eventData = await useFetch(`${config.public.appUrl}/api/cal-event?startsAt
   })
   .catch((err) => {
     console.log(err);
-  });
+  }); */
+
+const eventData = ref([]);
+
+try {
+  const data = await $fetch(`${config.public.appUrl}/api/cal-event?startsAt=${format(startOfMonth(month.value), 'yyyy-MM-dd\'T\'HH:mm:ssXX')}&endsAt=${format(endOfMonth(month.value), 'yyyy-MM-dd\'T\'HH:mm:ssXX')}`);
+  console.log(data);
+  eventData.value = data.calEvent;
+} catch(error) {
+  console.log(error);
+} finally {
+  //
+}
+
 
 const previousMonth = computed(() => {
   return format(subMonths(month.value, 1), 'MMMM-yyyy').toLowerCase();
@@ -51,8 +64,8 @@ const calendarMonth = computed(() => {
   });
   days.forEach((day) => {
     const calendarDay = {date: day};
-    if (eventData) {
-      const eventMatches = eventData.filter((event) => {
+    if (eventData.value) {
+      const eventMatches = eventData.value.filter((event) => {
         return (isAfter(parseISO(event.startsAt), startOfDay(day)) || isEqual(parseISO(event.startsAt), startOfDay(day))) && (isBefore(parseISO(event.endsAt), endOfDay(day)) || isEqual(parseISO(event.endsAt), endOfDay(day)))
       })
       calendarDay.events = eventMatches;

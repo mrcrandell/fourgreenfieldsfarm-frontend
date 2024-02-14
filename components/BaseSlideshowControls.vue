@@ -53,10 +53,10 @@ const swiper = useSwiper()
     border-radius: 50%;
     background-color: $white;
     border: 2px solid transparent;
-    color: $lynch;
+    color: $chicory-flower;
     transition: all 0.25s ease-in-out;
     &:hover {
-      border-color: $lynch;
+      border-color: $chicory-flower;
     }
     svg {
       // width: 0.5rem; // 8px
