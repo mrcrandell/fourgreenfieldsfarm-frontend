@@ -74,10 +74,12 @@
 }
 .btn-tertiary {
   background-color: $chicory-flower;
+  border-color: darken($chicory-flower,15%);
   color: #FFF;
   &:hover,
   &:focus {
     background-color: $balihai;
+    border-color: shade-color(darken($balihai,15%), 15%);
     color: #FFF;
   }
 }

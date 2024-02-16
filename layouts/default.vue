@@ -12,6 +12,7 @@
 @import '~/assets/scss/_reboot.scss';
 @import '~/assets/scss/_typography.scss';
 @import '~/assets/scss/_buttons.scss';
+@import '~/assets/scss/_forms.scss';
 @import '~/assets/scss/_modals.scss';
 @import '~/assets/scss/_global.scss';
 

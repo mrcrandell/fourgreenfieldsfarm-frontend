@@ -39,6 +39,10 @@ const colorPalette = ref([
   },
 ]);
 
+function submitForm() {
+  console.log('submit');
+}
+
 definePageMeta({
   layout: false,
 });
@@ -129,6 +133,35 @@ definePageMeta({
           </button>
         </p>
       </div>
+      <div>
+        <h2>Forms</h2>
+        <form @submit.prevent="submitForm">
+          <div class="form-group">
+            <label for="input1">Label</label>
+            <input
+              id="input1"
+              class="form-control"
+              placeholder="Placeholder"
+            >
+          </div>
+          <div class="form-group">
+            <label for="input2">Label</label>
+            <input
+              id="input2"
+              class="form-control is-invalid"
+              placeholder="Placeholder"
+            >
+            <div class="invalid-feedback">
+              There was an error.
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
     
     <div class="corner-art">
@@ -140,11 +173,12 @@ definePageMeta({
   </main>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '~/assets/scss/_fonts.scss';
 @import '~/assets/scss/_reboot.scss';
 @import '~/assets/scss/_typography.scss';
 @import '~/assets/scss/_buttons.scss';
+@import '~/assets/scss/_forms.scss';
 @import '~/assets/scss/_modals.scss';
 @import '~/assets/scss/_global.scss';
 
