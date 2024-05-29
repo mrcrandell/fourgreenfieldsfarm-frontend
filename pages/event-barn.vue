@@ -213,6 +213,7 @@ const isPricesModalOpen = ref(false);
   }
   // Prices
   .btn-prices {
+    white-space: normal;
     background-color: $pirategold;
     color: #fff;
     transition: background-color 0.25s ease-in-out;

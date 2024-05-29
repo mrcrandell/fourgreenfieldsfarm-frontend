@@ -16,9 +16,12 @@ $rainmaker: darken($chicory-flower,15%); //#465669 // Rainmaker
 $gray-200: #e9ecef;
 $gray-300: #dee2e6;
 $gray-400: #ced4da;
+$gray-600: #6c757d;
 $black: #252525;
 
 $primary: $camarone;
+$success: $greenhaze;
+$danger: #ce3d3a;
 
 // Body
 $body-bg: $white;
@@ -103,3 +106,8 @@ $input-focus-border-color: tint-color($component-active-bg, 50%);
 $input-focus-color: $input-color;
 $input-focus-width: $input-btn-focus-width;
 $input-focus-box-shadow: $input-btn-focus-box-shadow;
+$form-feedback-margin-top: .25rem; // 4px
+
+// Transitions
+$transition-collapse: height .35s ease;
+$transition-collapse-width: width .35s ease;

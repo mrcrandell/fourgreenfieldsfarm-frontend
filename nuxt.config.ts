@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import svgLoader from 'vite-svg-loader';
+
 export default defineNuxtConfig({
   modules: [
     // ...
@@ -8,7 +10,7 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     ['@nuxtjs/eslint-module', {
       fix: true
-    }]
+    }],
   ],
   plugins: [ '~/plugins/clickaway' ],
   piniaPersistedstate: {
@@ -50,7 +52,12 @@ export default defineNuxtConfig({
           `
         }
       }
-    }
+    },
+    plugins: [
+      svgLoader({
+       // Your settings.
+      })
+    ]
   },
   /* vite: {
     server: {

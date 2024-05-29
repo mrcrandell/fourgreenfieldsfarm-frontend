@@ -7,6 +7,11 @@ h1, h2, h3, h4, h5, h6,
   font-family: $headings-font-family;
   font-weight: $headings-font-weight;
   line-height: $headings-line-height;
+  small {
+    font-size: .875em;
+    line-height: 1;
+    color: $gray-600;
+  }
 }
 
 h1, .h1 {
@@ -25,6 +30,11 @@ h3, .h3 {
 h4, .h4 { font-size: $h4-font-size; }
 h5, .h5 { font-size: $h5-font-size; }
 h6, .h6 { font-size: $h6-font-size; }
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem; // 16px
+}
 
 .text-center {
   text-align: center;

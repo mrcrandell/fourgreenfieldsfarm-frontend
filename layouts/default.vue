@@ -1,3 +1,14 @@
+<script setup>
+const route = useRoute()
+
+useHead({
+  title: route.meta.title,
+  meta: [
+    { name: 'description', content: route.meta.description }
+  ],
+});
+</script>
+
 <template>
   <div>
     <AppHeader />

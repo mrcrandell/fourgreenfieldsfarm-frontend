@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/no-v-html -->
 <script setup>
 defineProps({
   thumbnailImg: {
@@ -34,11 +33,13 @@ const isModalOpen = ref(false);
         :alt="alt"
       >
     </a>
+    <!-- eslint-disable vue/no-v-html -->
     <figcaption
       v-if="caption"
       class="caption"
       v-html="caption"
     />
+    <!--eslint-enable-->
     <BaseModal
       class="modal-img"
       :is-shown="isModalOpen"
@@ -72,6 +73,7 @@ const isModalOpen = ref(false);
   @include shadow-1();
   img {
     display: block;
+    max-width: 100%;
   }
 }
 .modal-img :deep(.modal-dialog) {

@@ -37,6 +37,14 @@ const colorPalette = ref([
     name: 'Rainmaker',
     hex: '#465669',
   },
+  {
+    name: 'Success',
+    hex: '#00a651',
+  },
+  {
+    name: 'Danger',
+    hex: '#ce3d3a',
+  },
 ]);
 
 function submitForm() {
@@ -173,7 +181,7 @@ definePageMeta({
   </main>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '~/assets/scss/_fonts.scss';
 @import '~/assets/scss/_reboot.scss';
 @import '~/assets/scss/_typography.scss';

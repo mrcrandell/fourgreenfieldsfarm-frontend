@@ -29,4 +29,23 @@
     outline: 0;
     box-shadow: $box-shadow-inset, $input-focus-box-shadow;
   }
+
+  &.is-invalid {
+    border-color: $danger;
+  }
+}
+
+.form-group {
+  margin-bottom: 1rem; // 16px
+  > label {
+    margin-bottom: .5rem; // 8px
+  }
+}
+
+.invalid-feedback {
+  // display: none;
+  width: 100%;
+  margin-top: $form-feedback-margin-top;
+  font-size: .875em; // 14px
+  color: $danger;
 }
