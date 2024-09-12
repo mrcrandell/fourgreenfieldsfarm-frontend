@@ -1,30 +1,24 @@
-<script setup lang="ts">
-import { ref, reactive, computed } from "vue";
+<script setup>
+import { ref, computed } from "vue";
 import { useAuthStore } from "~/store/auth";
+import jwtDecode from 'jwt-decode';
 
 const authStore = useAuthStore();
 const router = useRouter();
 
-interface loginForm {
-  email: string;
-  password: string;
-}
-
-const loginForm: loginForm = {
-  email: "",
-  password: "",
-};
-
-const email: string = "";
-const password: string = "";
-const isLoading: boolean = false;
-const formError: any = reactive({});
+const email = ref("");
+const password = ref("");
+const isLoading = false;
+const formError = ref({});
 const submitBtnText = computed(() => {
   if (isLoading) {
     return "Loading...";
   }
   return "Submit";
 });
+
+// Forgot Password
+const isModalOpen = ref(false);
 
 /**
  * If success: redirect to home page
@@ -40,87 +34,161 @@ const submitBtnText = computed(() => {
 function validateForm() {
   // formError.value = {};
   let isFormValid = true;
-  if (email === "") {
+  if (email.value === "") {
     isFormValid = false;
-    formError.email = "Please enter an email.";
+    formError.value.email = "Please enter an email.";
   } else {
-    formError.email = null;
+    formError.value.email = null;
   }
-  if (password === "") {
+  if (password.value === "") {
     isFormValid = false;
-    formError.password = "Please enter a password.";
+    formError.value.password = "Please enter a password.";
   } else {
-    formError.password = null;
+    formError.value.password = null;
   }
   console.log(formError);
   return isFormValid;
 }
 
-function submitForm() {
+async function submitForm() {
   console.log(email);
   const isFormValid = validateForm();
   if (isFormValid) {
     console.log("submit");
-    authStore.login({ email, password });
+    // authStore.login({ email: email.value, password: password.value });
+    await $fetch(`/api/user/auth`, {
+        method: 'POST',
+        body: { email: email.value, password: password.value }
+      })
+        .then((response) => {
+          console.log(response);
+
+          const { token } = response;
+          authStore.userAccess = token;
+          authStore.user = jwtDecode(token);
+          // const token = response.token;
+
+          /* Update Pinia state */
+          /* this.user = response
+          this.token = this.user.jwt_token
+          // Store user in local storage to keep them logged in between page refreshes
+          localStorage.setItem('user', JSON.stringify(this.user))
+          localStorage.setItem('token', JSON.stringify(this.token)) */
+        })
+        .catch(error => { throw error })
   }
+}
+
+async function submitForgotPassword() {
+  console.log('forgot password')
 }
 </script>
 
 <template>
-  <form
-    class="login-form"
-    autocomplete="off"
-    @submit.prevent="submitForm"
-  >
-    <div class="logo-container">
+  <div class="login-form-container">
+    <form
+      class="login-form"
+      autocomplete="off"
+      @submit.prevent="submitForm"
+    >
+      <div class="logo-container">
       <!-- <Logo /> -->
-    </div>
-    <div
-      class="form-group"
-      :class="{ 'is-invalid': formError && formError.username }"
-    >
-      <label for="username">Email
-        <input
-          id="email"
-          v-model="email"
-          type="text"
-          class="form-control"
-          :class="{ 'is-invalid': formError && formError.email }"
-        ></label>
-      <div
-        v-if="formError && formError.email"
-        class="invalid-feedback"
-      >
-        {{ formError.email }}
       </div>
-    </div>
-    <div
-      class="form-group"
-      :class="{ 'is-invalid': formError && formError.password }"
-    >
-      <label for="password">Password
-        <input
-          id="password"
-          v-model="password"
-          type="password"
-          class="form-control"
-          :class="{ 'is-invalid': formError && formError.password }"
-        ></label>
       <div
-        v-if="formError && formError.password"
-        class="invalid-feedback"
+        class="form-group"
+        :class="{ 'is-invalid': formError && formError.username }"
       >
-        {{ formError.password }}
+        <label for="username">Email
+          <input
+            id="email"
+            v-model="email"
+            type="text"
+            class="form-control"
+            :class="{ 'is-invalid': formError && formError.email }"
+          ></label>
+        <div
+          v-if="formError && formError.email"
+          class="invalid-feedback"
+        >
+          {{ formError.email }}
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <button
-        type="submit"
-        class="btn btn-primary"
-        :disabled="isLoading"
+      <div
+        class="form-group"
+        :class="{ 'is-invalid': formError && formError.password }"
       >
-        {{ submitBtnText }}
-      </button>
-    </div>
-  </form>
+        <label for="password">Password
+          <input
+            id="password"
+            v-model="password"
+            type="password"
+            class="form-control"
+            :class="{ 'is-invalid': formError && formError.password }"
+          ></label>
+        <div
+          v-if="formError && formError.password"
+          class="invalid-feedback"
+        >
+          {{ formError.password }}
+        </div>
+      </div>
+      <div class="form-group">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          :disabled="isLoading"
+        >
+          {{ submitBtnText }}
+        </button>
+      </div>
+    </form>
+    <button
+      class="btn btn-link"
+      @click="isModalOpen = true"
+    >
+      Forgot Password
+    </button>
+    <BaseModal 
+      :is-shown="isModalOpen"
+      @closed="isModalOpen = false"
+    >
+      <form
+        class="forgot-password-form"
+        autocomplete="off"
+        @submit.prevent="submitForgotPassword"
+      >
+        <div class="logo-container">
+          <!-- <Logo /> -->
+        </div>
+        <div
+          class="form-group"
+          :class="{ 'is-invalid': formError && formError.username }"
+        >
+          <label for="username">Email
+            <input
+              id="email"
+              v-model="email"
+              type="text"
+              class="form-control"
+              :class="{ 'is-invalid': formError && formError.email }"
+            ></label>
+          <div
+            v-if="formError && formError.email"
+            class="invalid-feedback"
+          >
+            {{ formError.email }}
+          </div>
+        </div>
+        <div class="form-group">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            :disabled="isLoading"
+          >
+            {{ submitBtnText }}
+          </button>
+        </div>
+      </form>
+    </BaseModal>
+  </div>
 </template>

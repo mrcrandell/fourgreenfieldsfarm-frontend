@@ -72,5 +72,9 @@ export default defineNuxtConfig({
         }
     }
   } */
-  telemetry: false
+  telemetry: false,
+  routeRules: {
+    // Admin dashboard renders only on client-side
+    '/admin/**': { ssr: false },
+  }
 })

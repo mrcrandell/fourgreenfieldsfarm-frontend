@@ -1,16 +1,4 @@
-<template>
-  <div>
-    <template v-if="authStore.isTokenValid">
-      Admin Layout
-      <slot />
-    </template>
-    <template v-else>
-      <LoginForm />
-    </template>
-  </div>
-</template>
-
-<script setup lang="ts">
+<script setup>
 import { useAuthStore } from "~/store/auth";
 const config = useRuntimeConfig();
 const authStore = useAuthStore();
@@ -21,19 +9,20 @@ authStore.userAccess = { firstName: "Matt" };
 
 console.log(config.public.appUrl);
 
-const data = await useFetch(`${config.public.appUrl}/api/cal-event`)
+/* const data = await useFetch(`${config.public.appUrl}/api/cal-event`)
   .then((response) => {
-    // console.log(response.data["_rawValue"]);
+    console.log(response.data);
     const data = response["data"]["_rawValue"];
     // console.log(calEvent);
     return data;
   })
   .catch((err) => {
     console.log(err);
-  });
+  });*/
 
-// const { data } = await useFetch(`${config.public.appUrl}/api/cal-event`);
-console.log(data);
+const { data } = await useFetch(`${config.public.appUrl}/api/cal-event`);
+const calEvent = ref(data?.calEvent)
+console.log(calEvent.value);
 
 /* const testData = await useFetch(`https://api.sampleapis.com/beers/ale`)
   .then((response) => {
@@ -64,12 +53,14 @@ console.log(data);
   }); */
 </script>
 
-<script lang="ts">
-export default {
-  name: "Admin",
-  mounted() {
-    // eslint-disable-next-line
-    // console.log(authStore);
-  },
-};
-</script>
+<template>
+  <div>
+    <template v-if="authStore.isTokenValid">
+      Admin Layout
+      <slot />
+    </template>
+    <template v-else>
+      <LoginForm />
+    </template>
+  </div>
+</template>
